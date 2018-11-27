@@ -1,0 +1,28 @@
+
+
+/**
+         * 加密手机号码(11位)、身份证号码(15位、18位)
+         * @param text 要加密的号码；
+         * @return
+        * @throws ParseException
+         */  
+        public static String encodeNum(String text){  
+              if(StringUtils.isEmpty(text)){
+                     return "";
+              }
+              String str = "";
+              switch (text.length()) {
+                    case 11:
+                          str = text.replaceAll("(\\d{3})\\d{4}(\\d{4})",  "$1****$2");
+                          break;
+                    case 15:
+                          str = text.replaceAll("(\\d{4})\\d{7}(\\w{4})",  "$1*******$2");
+                          break;
+                    case 18:
+                          str = text.replaceAll("(\\d{4})\\d{10}(\\w{4})",  "$1**********$2");
+                          break;
+                    default:
+                          break;
+                    }
+             return str;
+        }
